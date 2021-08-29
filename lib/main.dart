@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,11 @@ class _MyAppState extends State<MyApp> {
     FirebaseAuth _auth = FirebaseAuth.instance;
     // logout user by uncommenting the following line
     // await _auth.signOut();
-    if (_auth.currentUser == null) return await loginUser();
+    if (_auth.currentUser == null) {
+      User user = await loginUser();
+      await storeInFirestore(user);
+      return user;
+    }
     return _auth.currentUser;
   }
 
@@ -69,11 +74,18 @@ class _MyAppState extends State<MyApp> {
 
   Future<dynamic>? loginUser() async {
     FirebaseAuth _auth = FirebaseAuth.instance;
-    _auth.signInAnonymously();
+    await _auth.signInAnonymously();
     return _auth.currentUser;
   }
 
   void logoutUser() async {
     await FirebaseAuth.instance.signOut();
   }
+}
+
+Future<void>? storeInFirestore(User user) async {
+  FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  await _firestore.collection("users").doc(user.uid).set({
+    "createdAt": DateTime.now().millisecondsSinceEpoch,
+  });
 }
