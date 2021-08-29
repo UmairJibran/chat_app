@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:chat_app/constants/routes.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -46,11 +47,12 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.cyan,
       ),
+      routes: Routes.routes,
       home: FutureBuilder(
         future: checkLoginStatus,
         builder: (_, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
-            if (snapshot.hasData) return AllChats(snapshot.data);
+            if (snapshot.hasData) return AllChats();
           }
           return Scaffold(
             body: Container(
