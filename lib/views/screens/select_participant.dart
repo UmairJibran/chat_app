@@ -29,12 +29,14 @@ class _SelectParticipantState extends State<SelectParticipant> {
   }
 
   Future<void> beginConversation(String otherUserId) async {
+    String? convoId;
     FirebaseFirestore _firestore = FirebaseFirestore.instance;
     var conversation = await _firestore.collection("chats").where(
         "chatParticipants",
         isEqualTo: [FirebaseAuth.instance.currentUser?.uid, otherUserId]).get();
     if (conversation.docs.isEmpty) {
-      await _firestore.collection("chats").doc().set({
+      DocumentReference ref = _firestore.collection("chats").doc();
+      await ref.set({
         "chatParticipants": [
           FirebaseAuth.instance.currentUser?.uid,
           otherUserId
@@ -44,12 +46,13 @@ class _SelectParticipantState extends State<SelectParticipant> {
         "lastMessageTime": DateTime.now().millisecondsSinceEpoch,
         "lastMessageSender": FirebaseAuth.instance.currentUser?.uid,
       });
+      convoId = ref.id;
+    } else {
+      convoId = conversation.docs.first.id;
     }
     Navigator.of(context).pushNamed(
       ChatScreenView.routeName,
-      arguments: {
-        "participants": [FirebaseAuth.instance.currentUser?.uid, otherUserId]
-      },
+      arguments: convoId,
     );
   }
 
