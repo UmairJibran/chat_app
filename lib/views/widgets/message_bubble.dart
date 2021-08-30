@@ -16,7 +16,7 @@ class MessageBubble extends StatelessWidget {
     Color appcolor = Color(0xff006600);
     if (isMe!) {
       return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10),
+        padding: const EdgeInsets.symmetric(vertical: 0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
@@ -51,7 +51,7 @@ class MessageBubble extends StatelessWidget {
       );
     } else {
       return Padding(
-        padding: EdgeInsets.symmetric(vertical: 10),
+        padding: EdgeInsets.symmetric(vertical: 0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
