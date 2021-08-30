@@ -32,22 +32,6 @@ class _AllChatsState extends State<AllChats> {
         .orderBy('lastMessageTime', descending: true)
         .snapshots();
     return querySnapshot;
-    // List<Map<String, dynamic>> chats = [];
-    // querySnapshot.docs.forEach((element) {
-    //   var chat = json.encode(element.data());
-    //   print(chat);
-    //   chats.add(
-    //     {
-    //       "chatParticipants": json.decode(chat)["chatParticipants"],
-    //       "lastMessage": json.decode(chat)["lastMessage"],
-    //       "lastMessageTime": DateTime.fromMillisecondsSinceEpoch(
-    //         json.decode(chat)["lastMessageTime"],
-    //       ),
-    //       "lastMessageSender": json.decode(chat)["lastMessageSender"],
-    //     },
-    //   );
-    // });
-    // return chats;
   }
 
   @override
