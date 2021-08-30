@@ -1,6 +1,3 @@
-import 'dart:convert';
-import 'dart:html';
-
 import 'package:chat_app/views/screens/chat_screen.dart';
 import 'package:chat_app/views/screens/select_participant.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -111,9 +108,7 @@ class _AllChatsState extends State<AllChats> {
                 onTap: () {
                   Navigator.of(context).pushNamed(
                     ChatScreenView.routeName,
-                    arguments: {
-                      "participants": docs[index]["chatParticipants"]
-                    },
+                    arguments: docs[index].id,
                   );
                 },
               );
