@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class AllChats extends StatefulWidget {
-  static final String routeName = "/all-chats";
+  static const String routeName = "/all-chats";
 
   const AllChats({
     Key? key,

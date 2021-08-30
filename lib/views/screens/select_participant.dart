@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'chat_screen.dart';
 
 class SelectParticipant extends StatefulWidget {
-  static final String routeName = "/participant-selection";
+  static const String routeName = "/participant-selection";
   const SelectParticipant({Key? key}) : super(key: key);
 
   @override

@@ -5,9 +5,22 @@ import 'package:flutter/material.dart';
 import '../views/screens/select_participant.dart';
 
 class Routes {
-  static final Map<String, Widget Function(BuildContext)> routes = {
-    AllChats.routeName: (contex) => AllChats(),
-    SelectParticipant.routeName: (context) => SelectParticipant(),
-    ChatScreenView.routeName: (context) => ChatScreenView(),
-  };
+  Route? onGeneratedRoute(RouteSettings routeSettings) {
+    switch (routeSettings.name) {
+      case "/":
+        return MaterialPageRoute(
+          builder: (ctx) => AllChats(),
+        );
+      case SelectParticipant.routeName:
+        return MaterialPageRoute(
+          builder: (ctx) => SelectParticipant(),
+        );
+      case ChatScreenView.routeName:
+        return MaterialPageRoute(
+          builder: (ctx) => ChatScreenView(routeSettings.arguments as String),
+        );
+      default:
+        return null;
+    }
+  }
 }

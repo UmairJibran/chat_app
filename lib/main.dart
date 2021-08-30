@@ -47,7 +47,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.cyan,
       ),
-      routes: Routes.routes,
+      onGenerateRoute: Routes().onGeneratedRoute,
       home: FutureBuilder(
         future: checkLoginStatus,
         builder: (_, snapshot) {

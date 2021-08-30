@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ChatScreenView extends StatefulWidget {
-  static final String routeName = "chat-screen";
-  const ChatScreenView({Key? key}) : super(key: key);
+  static const String routeName = "chat-screen";
 
   @override
   _ChatScreenViewState createState() => _ChatScreenViewState();
