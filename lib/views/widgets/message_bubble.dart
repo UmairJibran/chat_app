@@ -22,6 +22,7 @@ class MessageBubble extends StatelessWidget {
           children: <Widget>[
             Flexible(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Container(
                     decoration: BoxDecoration(
@@ -56,6 +57,7 @@ class MessageBubble extends StatelessWidget {
           children: <Widget>[
             Flexible(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
                     decoration: BoxDecoration(
