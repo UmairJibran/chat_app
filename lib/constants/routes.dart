@@ -1,7 +1,7 @@
-import 'package:chat_app/views/screens/all_chats.dart';
-import 'package:chat_app/views/screens/chat_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../views/screens/all_chats.dart';
+import '../views/screens/chat_screen.dart';
 import '../views/screens/select_participant.dart';
 
 class Routes {

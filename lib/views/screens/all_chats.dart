@@ -1,9 +1,10 @@
-import 'package:chat_app/views/screens/chat_screen.dart';
-import 'package:chat_app/views/screens/select_participant.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
+import 'chat_screen.dart';
+import 'select_participant.dart';
 
 class AllChats extends StatefulWidget {
   static const String routeName = "/all-chats";
